@@ -77,9 +77,17 @@ function displayBooks(books) {
 
     var saveBtnEl = document.createElement('button');
     saveBtnEl.textContent = 'Save Book';
+    saveBtnEl.addEventListener('click', saveBooks )
+
 
     newCard.append(coverImg, titleEl, authorEl, saveBtnEl);
     bookContainerEl.append(newCard);
+  }
+}
+function saveBooks(event) {
+  var info = event.target.parentElement.children
+  for (var i = 0; i < 3; i++) {
+    window.localStorage.setItem("books",JSON.stringify(info[i]))
   }
 }
 // EVENT LISTENERS
