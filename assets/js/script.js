@@ -60,19 +60,21 @@ function getBooks(city, state, country) {
 function displayBooks(books) {
   for (var i = 0; i < books.length; i++) {
     var newCard = document.createElement('div');
-    console.log(books[i].cover_i);
+    //console.log(books[i].cover_i);
     var coverImg = document.createElement('img');
     if (books[i].cover_i) {
       coverImg.src = `https://covers.openlibrary.org/b/id/${books[i].cover_i}-M.jpg`;
     } else {
-      console.log('not found');
+      //console.log('not found');
       coverImg.src = './assets/img/no_cover.jpg';
     }
 
     var titleEl = document.createElement('p');
+    titleEl.id = "title"
     titleEl.innerHTML = `${books[i].title} <span>(${books[i].publish_year[0]})</span>`;
 
     var authorEl = document.createElement('p');
+    authorEl.id = "author"
     authorEl.textContent = books[i].author_name;
 
     var saveBtnEl = document.createElement('button');
@@ -86,8 +88,19 @@ function displayBooks(books) {
 }
 function saveBooks(event) {
   var info = event.target.parentElement.children
+  var bookArray = []
   for (var i = 0; i < 3; i++) {
-    window.localStorage.setItem("books",JSON.stringify(info[i]))
+    var bookObj = {}
+    if (info[i].localName === "img") {
+      bookObj.cover = info[i].currentSrc
+    } else {
+      var id = info[i].id
+      bookObj[id] = info[i].innerText
+    }
+    
+    bookArray.push(bookObj)
+    window.localStorage.setItem("books",JSON.stringify(bookArray))
+    console.log(info)
   }
 }
 // EVENT LISTENERS
