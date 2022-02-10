@@ -4,6 +4,7 @@ var currencyEl_two = document.getElementById(`currency-two`);
 var amountEl_one = document.getElementById(`amount-one`);
 var amountEl_two = document.getElementById(`amount-two`);
 var rateEl = document.getElementById(`rate`);
+var bookArray = [];
 
 // function for exchange rate calculator
 function calculate() {
@@ -127,9 +128,8 @@ function displayBooks(books) {
 }
 function saveBooks(event) {
   var info = event.target.parentElement.children
-  var bookArray = []
+  var bookObj = {}
   for (var i = 0; i < 3; i++) {
-    var bookObj = {}
     if (info[i].localName === "img") {
       bookObj.cover = info[i].currentSrc
     } else {
@@ -142,6 +142,7 @@ function saveBooks(event) {
     console.log(info)
   }
 }
+
 // EVENT LISTENERS
 form.addEventListener('submit', () => {
   event.preventDefault();
