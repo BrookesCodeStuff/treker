@@ -101,7 +101,7 @@ function getBooks(city, state, country) {
 function displayBooks(books) {
   for (var i = 0; i < books.length; i++) {
     var newCard = document.createElement('div');
-    newCard.classList.add('text-white p-2');
+
     var coverImg = document.createElement('img');
     if (books[i].cover_i) {
       coverImg.src = `https://covers.openlibrary.org/b/id/${books[i].cover_i}-M.jpg`;
@@ -118,10 +118,20 @@ function displayBooks(books) {
     authorEl.textContent = books[i].author_name;
 
     var saveBtnEl = document.createElement('button');
+    var btnClasses = [
+      'bg-blue-500',
+      'px-8',
+      'rounded-full',
+      'text-white',
+      'self-center',
+    ];
     saveBtnEl.textContent = 'Save Book';
+    saveBtnEl.classList.add(...btnClasses);
     saveBtnEl.addEventListener('click', saveBooks);
 
     newCard.append(coverImg, titleEl, authorEl, saveBtnEl);
+    var cardClasses = ['text-white', 'p-2'];
+    newCard.classList.add(...cardClasses);
     bookContainerEl.append(newCard);
   }
 }

@@ -23,11 +23,11 @@
     <!-- main -->
     <main class="h-full flex flex-col items-center px-6 lg:px-32 bg-blue-900">
       <form
-        class="flex flex-nowrap flex-col justify-evenly content-start items-start lg:flex-row py-4">
+        class="flex flex-nowrap flex-col justify-evenly content-start items-start md:flex-row md:items-center md:content-center lg:flex-row lg:items-center lg:content-center xl:flex-row xl:items-center py-4">
         <div id="origin-wrapper" class="pb-2">
           <label for="origin-country" class="text-white"
             >Country of Origin</label
-          >
+          ><br />
           <select name="origin-country" id="origin-country">
             <option value="" selected disabled>
               Choose your country of origin...
@@ -341,7 +341,7 @@
           </select>
         </div>
 
-        <div id="destination-wrapper" class="flex-col pb-2">
+        <div id="destination-wrapper" class="flex-col p-2">
           <label for="destination" class="text-white flex-grow-1"
             >Destination</label
           ><br />
