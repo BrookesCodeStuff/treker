@@ -10,28 +10,24 @@
   <body>
     <!-- header -->
     <header>
-      <nav>
-        <a href="#" class="logo">
-          <h1>
-            <div class='nav-brand'> 
-                <a href='home.php'> 
-                  <img src='logo (no background) 3.0.png' alt='Treker logo'> 
-                  <a href="./save.html">View Saved Travel Guides →</a>
-                </a> 
-               </div> 
-               
-          </h1>
-        </a>
-  </nav>
+      <nav class="flex justify-between items-center">
+        <a href="index.html">
+          <img src="./assets/img/logo.png" alt="Treker logo" width="250"
+        /></a>
+        <a href="./save.html" class="hover:underline text-slate-500"
+          >View Saved Travel Guides →</a
+        >
+      </nav>
     </header>
 
     <!-- main -->
-    <main>
-        <main class= "h-full flex items-center px-6 lg:px-32 bg-blue-900 text-white">
-            <section class="w-full md:w-9/12 xl:w-8/12"></section>
-      <form>
-        <div id="origin-wrapper">
-          <label for="origin-country">Country of Origin</label>
+    <main class="h-full flex flex-col items-center px-6 lg:px-32 bg-blue-900">
+      <form
+        class="flex flex-nowrap flex-col justify-evenly content-start items-start lg:flex-row py-4">
+        <div id="origin-wrapper" class="pb-2">
+          <label for="origin-country" class="text-white"
+            >Country of Origin</label
+          >
           <select name="origin-country" id="origin-country">
             <option value="" selected disabled>
               Choose your country of origin...
@@ -345,22 +341,28 @@
           </select>
         </div>
 
-        <div id="destination-wrapper">
-          <label for="destination">Destination</label>
+        <div id="destination-wrapper" class="flex-col pb-2">
+          <label for="destination" class="text-white flex-grow-1"
+            >Destination</label
+          ><br />
           <input
             type="text"
             name="destination"
             id="destination"
             placeholder="City; City, State; or City, Country" />
         </div>
-        <button type="submit" id="submit">Search</button>
+        <button
+          type="submit"
+          id="submit"
+          class="bg-blue-500 px-8 rounded-full text-white self-center">
+          Search
+        </button>
       </form>
-      <center>
-<!--Exchange rate calculator-->
-      <h3>Exchange Rate Calculator</h3>
+      <!--Exchange rate calculator-->
+      <h3 class="text-white">Exchange Rate Calculator</h3>
       <div id="exchangerate-container">
-         <div class="currency">
-           <select id="currency-one">
+        <div class="currency">
+          <select id="currency-one">
             <option value="AED">United Arab Emirates</option>
             <option value="ARS">Argentina</option>
             <option value="AUD">Australia</option>
@@ -416,11 +418,9 @@
           </select>
           <input type="number" id="amount-one" placeholder="0" value="1" />
         </div>
-  
-      
-          <div class="rate" id="rate"></div>
-        
-  
+
+        <div class="rate text-white" id="rate"></div>
+
         <div class="currency">
           <select id="currency-two">
             <option value="AED">United Arab Emirates</option>
@@ -475,18 +475,16 @@
             <option value="UYU">Uruguay</option>
             <option value="VND">Vietnam</option>
             <option value="ZAR">South Africa</option>
-           </select>
-           <input type="number" id="amount-two"/>
-         </div>
-    </div>
-    </center>
+          </select>
+          <input type="number" id="amount-two" />
+        </div>
+      </div>
 
-      <div id="book-container"></div>
+      <div id="book-container" class="flex flex-wrap py-4"></div>
     </main>
 
-    
     <!-- footer -->
-    <footer>
+    <footer class="flex flex-col justify-center items-center px-4">
       <p>
         &copy;
         <a href="https://github.com/BrookesCodeStuff/treker">Team Treker</a>

@@ -8,13 +8,14 @@ var bookArray = [];
 
 // function for exchange rate calculator
 function calculate() {
-    var currency_one = currencyEl_one.value;
-    var currency_two = currencyEl_two.value;
+  var currency_one = currencyEl_one.value;
+  var currency_two = currencyEl_two.value;
 
-    fetch(`https://v6.exchangerate-api.com/v6/7ba4330f269157323b1e1f6f/latest/${currency_one}`)
+  fetch(
+    `https://v6.exchangerate-api.com/v6/7ba4330f269157323b1e1f6f/latest/${currency_one}`
+  )
     .then((res) => res.json())
     .then((data) => {
-    
       var rate = data.conversion_rates[currency_two];
       rateEl.innerText = `1 ${currency_one} = ${rate} ${currency_two}`;
 
@@ -22,13 +23,11 @@ function calculate() {
     });
 }
 
-
 // click listeners for exchange rate calculator
 currencyEl_one.addEventListener(`change`, calculate);
 currencyEl_two.addEventListener(`change`, calculate);
 amountEl_one.addEventListener(`input`, calculate);
 amountEl_two.addEventListener(`input`, calculate);
-
 
 calculate();
 
@@ -102,6 +101,7 @@ function getBooks(city, state, country) {
 function displayBooks(books) {
   for (var i = 0; i < books.length; i++) {
     var newCard = document.createElement('div');
+    newCard.classList.add('text-white p-2');
     var coverImg = document.createElement('img');
     if (books[i].cover_i) {
       coverImg.src = `https://covers.openlibrary.org/b/id/${books[i].cover_i}-M.jpg`;
@@ -110,36 +110,35 @@ function displayBooks(books) {
     }
 
     var titleEl = document.createElement('p');
-    titleEl.id = "title"
+    titleEl.id = 'title';
     titleEl.innerHTML = `${books[i].title} <span>(${books[i].publish_year[0]})</span>`;
 
     var authorEl = document.createElement('p');
-    authorEl.id = "author"
+    authorEl.id = 'author';
     authorEl.textContent = books[i].author_name;
 
     var saveBtnEl = document.createElement('button');
     saveBtnEl.textContent = 'Save Book';
-    saveBtnEl.addEventListener('click', saveBooks )
-
+    saveBtnEl.addEventListener('click', saveBooks);
 
     newCard.append(coverImg, titleEl, authorEl, saveBtnEl);
     bookContainerEl.append(newCard);
   }
 }
 function saveBooks(event) {
-  var info = event.target.parentElement.children
-  var bookObj = {}
+  var info = event.target.parentElement.children;
+  var bookObj = {};
   for (var i = 0; i < 3; i++) {
-    if (info[i].localName === "img") {
-      bookObj.cover = info[i].currentSrc
+    if (info[i].localName === 'img') {
+      bookObj.cover = info[i].currentSrc;
     } else {
-      var id = info[i].id
-      bookObj[id] = info[i].innerText
+      var id = info[i].id;
+      bookObj[id] = info[i].innerText;
     }
-    
-    bookArray.push(bookObj)
-    window.localStorage.setItem("books",JSON.stringify(bookArray))
-    console.log(info)
+
+    bookArray.push(bookObj);
+    window.localStorage.setItem('books', JSON.stringify(bookArray));
+    console.log(info);
   }
 }
 
