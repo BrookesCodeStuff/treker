@@ -152,7 +152,11 @@ function displayBooks(books) {
     newCard.classList.add(...cardClasses);
     bookContainerEl.append(newCard);
   }
+
+  // Re-enable the search button after guidebooks have loaded
+  submitBtnEl.disabled = false;
 }
+
 function saveBooks(event) {
   var info = event.target.parentElement.children;
   var bookObj = {};
@@ -166,13 +170,16 @@ function saveBooks(event) {
 
     bookArray.push(bookObj);
     window.localStorage.setItem('books', JSON.stringify(bookArray));
-    console.log(info);
   }
 }
 
 // EVENT LISTENERS
 form.addEventListener('submit', () => {
   event.preventDefault();
+
+  // Disable the search button to prevent spam clicking
   submitBtnEl.disabled = true;
+
+  // Send inputs to the search handler
   handleLookup(originEl.value, destinationEl.value);
 });
