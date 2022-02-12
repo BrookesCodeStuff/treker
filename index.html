@@ -7,28 +7,35 @@
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <title>Treker</title>
   </head>
-  <body>
+  <body class="w-full h-full flex flex-col">
     <!-- header -->
-    <header>
-      <nav class="flex justify-between items-center">
+    <header class="pb-3">
+      <nav
+        class="flex flex-col flex-nowrap justify-center items-center content-cente md:flex-row md:justify-between">
         <a href="index.html">
-          <img src="./assets/img/logo.png" alt="Treker logo" width="250"
-        /></a>
-        <a href="./save.html" class="hover:underline text-slate-500"
+          <img src="./assets/img/logo.png" alt="Treker logo" width="250" />
+        </a>
+        <a
+          href="index.html"
+          class="hover:underline text-slate-500 self-center md:pr-4"
           >View Saved Travel Guides →</a
         >
       </nav>
     </header>
 
     <!-- main -->
-    <main class="h-full flex flex-col items-center px-6 lg:px-32 bg-blue-900">
+    <main class="flex flex-col px-2 bg-blue-900">
       <form
-        class="flex flex-nowrap flex-col justify-evenly content-start items-start md:flex-row md:items-center md:content-center lg:flex-row lg:items-center lg:content-center xl:flex-row xl:items-center py-4">
+        class="flex flex-col py-4 md:flex-row justify-evenly md:content-center md:items-center">
         <div id="origin-wrapper" class="pb-2">
-          <label for="origin-country" class="text-white"
-            >Country of Origin</label
-          ><br />
-          <select name="origin-country" id="origin-country">
+          <label for="origin-country" class="text-white">
+            Country of Origin
+          </label>
+          <br />
+          <select
+            name="origin-country"
+            id="origin-country"
+            class="w-full text-ellipsis rounded">
             <option value="" selected disabled>
               Choose your country of origin...
             </option>
@@ -341,28 +348,30 @@
           </select>
         </div>
 
-        <div id="destination-wrapper" class="flex-col p-2">
-          <label for="destination" class="text-white flex-grow-1"
-            >Destination</label
-          ><br />
+        <div id="destination-wrapper" class="pb-2">
+          <label for="destination" class="text-white"> Destination</label>
+          <br />
           <input
             type="text"
             name="destination"
             id="destination"
-            placeholder="City; City, State; or City, Country" />
+            placeholder="City; City, State; or City, Country"
+            class="w-full rounded" />
         </div>
         <button
           type="submit"
           id="submit"
-          class="bg-blue-500 px-8 rounded-full text-white self-center">
+          class="bg-blue-500 py-2 px-8 rounded-full text-white self-center">
           Search
         </button>
       </form>
+
       <!--Exchange rate calculator-->
-      <h3 class="text-white">Exchange Rate Calculator</h3>
-      <div id="exchangerate-container">
-        <div class="currency">
-          <select id="currency-one">
+      <div id="exchangerate-container" class="flex flex-col">
+        <h3 class="text-white md:self-center">Exchange Rate Calculator</h3>
+        <div
+          class="flex flex-col py-4 md:flex-row justify-between content-center items-center">
+          <select id="currency-one" class="w-full mx-2 rounded text-ellipsis">
             <option value="AED">United Arab Emirates</option>
             <option value="ARS">Argentina</option>
             <option value="AUD">Australia</option>
@@ -416,13 +425,19 @@
             <option value="VND">Vietnam</option>
             <option value="ZAR">South Africa</option>
           </select>
-          <input type="number" id="amount-one" placeholder="0" value="1" />
+          <input
+            type="number"
+            id="amount-one"
+            placeholder="0"
+            value="1"
+            class="w-full rounded" />
         </div>
 
-        <div class="rate text-white" id="rate"></div>
+        <div class="rate text-white p-2 self-center" id="rate"></div>
 
-        <div class="currency">
-          <select id="currency-two">
+        <div
+          class="flex flex-col py-4 md:flex-row justify-between content-center items-center">
+          <select id="currency-two" class="w-full mx-2 rounded text-ellipsis">
             <option value="AED">United Arab Emirates</option>
             <option value="ARS">Argentina</option>
             <option value="AUD">Australia</option>
@@ -476,11 +491,14 @@
             <option value="VND">Vietnam</option>
             <option value="ZAR">South Africa</option>
           </select>
-          <input type="number" id="amount-two" />
+          <input type="number" id="amount-two" class="w-full rounded" />
         </div>
       </div>
 
-      <div id="book-container" class="flex flex-wrap py-4"></div>
+      <!-- guidebook display -->
+      <div
+        id="book-container"
+        class="container mx-auto flex flex-wrap justify-evenly items-center w-full"></div>
     </main>
 
     <!-- footer -->

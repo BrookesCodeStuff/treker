@@ -99,27 +99,38 @@ function getBooks(city, state, country) {
 }
 
 function displayBooks(books) {
+  // Clear the bookContainer of any existing data
+  bookContainerEl.textContent = '';
+
   for (var i = 0; i < books.length; i++) {
+    // Create a new div element
     var newCard = document.createElement('div');
 
+    // Add the book cover
     var coverImg = document.createElement('img');
+    // If the book has a cover in the library, use it
     if (books[i].cover_i) {
       coverImg.src = `https://covers.openlibrary.org/b/id/${books[i].cover_i}-M.jpg`;
     } else {
+      // If there is no cover, use the placeholder image
       coverImg.src = './assets/img/no_cover.jpg';
     }
 
     var titleEl = document.createElement('p');
+    var titleClasses = ['font-bold', 'uppercase', 'my-2'];
     titleEl.id = 'title';
+    titleEl.classList.add(...titleClasses);
     titleEl.innerHTML = `${books[i].title} <span>(${books[i].publish_year[0]})</span>`;
 
     var authorEl = document.createElement('p');
     authorEl.id = 'author';
-    authorEl.textContent = books[i].author_name;
+    authorEl.textContent = books[i].author_name.toString().replace(/\,/g, ', ');
 
     var saveBtnEl = document.createElement('button');
     var btnClasses = [
       'bg-blue-500',
+      'my-3',
+      'py-2',
       'px-8',
       'rounded-full',
       'text-white',
@@ -130,11 +141,22 @@ function displayBooks(books) {
     saveBtnEl.addEventListener('click', saveBooks);
 
     newCard.append(coverImg, titleEl, authorEl, saveBtnEl);
-    var cardClasses = ['text-white', 'p-2'];
+    var cardClasses = [
+      'text-white',
+      'p-2',
+      'w-full',
+      'md:w-1/3',
+      'lg:1/4',
+      'xl:1/4',
+    ];
     newCard.classList.add(...cardClasses);
     bookContainerEl.append(newCard);
   }
+
+  // Re-enable the search button after guidebooks have loaded
+  submitBtnEl.disabled = false;
 }
+
 function saveBooks(event) {
   var info = event.target.parentElement.children;
   var bookObj = {};
@@ -148,13 +170,16 @@ function saveBooks(event) {
 
     bookArray.push(bookObj);
     window.localStorage.setItem('books', JSON.stringify(bookArray));
-    console.log(info);
   }
 }
 
 // EVENT LISTENERS
 form.addEventListener('submit', () => {
   event.preventDefault();
+
+  // Disable the search button to prevent spam clicking
   submitBtnEl.disabled = true;
+
+  // Send inputs to the search handler
   handleLookup(originEl.value, destinationEl.value);
 });
