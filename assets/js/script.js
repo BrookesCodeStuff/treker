@@ -179,7 +179,7 @@ function saveBooks(event) {
 function loadSavedBooks() {
   var savedBooks = window.localStorage.getItem("books")
   console.log(savedBooks)
-  if (saveBooks == null){
+  if (savedBooks == null){
     bookArray = []
   } else{
     bookArray = JSON.parse(savedBooks)
