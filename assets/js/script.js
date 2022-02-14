@@ -35,7 +35,7 @@ calculate();
 // API variables
 var exchangeApiKey = 'ae50e5610c03661d4029286a';
 var exchangeUrl = 'https://v6.exchangerate-api.com/v6/';
-var libraryUrl = 'http://openlibrary.org/';
+var libraryUrl = 'https://openlibrary.org/';
 var geocodeApiKey = '0f4c0c1267874aa0a522a0d2e8f4b280';
 var geocodeUrl = 'https://api.opencagedata.com/geocode/v1/json?q=';
 
@@ -172,20 +172,12 @@ function saveBooks(event) {
   window.localStorage.setItem('books', JSON.stringify(bookArray));
 }
 function loadSavedBooks() {
-<<<<<<< HEAD
   var savedBooks = window.localStorage.getItem('books');
-  if (!savedBooks) {
-    return false;
+
+  if (savedBooks == null) {
+    bookArray = [];
   } else {
     bookArray = JSON.parse(savedBooks);
-=======
-  var savedBooks = window.localStorage.getItem("books")
-  console.log(savedBooks)
-  if (savedBooks == null){
-    bookArray = []
-  } else{
-    bookArray = JSON.parse(savedBooks)
->>>>>>> develop
   }
 }
 
