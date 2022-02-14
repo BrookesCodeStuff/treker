@@ -172,11 +172,20 @@ function saveBooks(event) {
   window.localStorage.setItem('books', JSON.stringify(bookArray));
 }
 function loadSavedBooks() {
+<<<<<<< HEAD
   var savedBooks = window.localStorage.getItem('books');
   if (!savedBooks) {
     return false;
   } else {
     bookArray = JSON.parse(savedBooks);
+=======
+  var savedBooks = window.localStorage.getItem("books")
+  console.log(savedBooks)
+  if (savedBooks == null){
+    bookArray = []
+  } else{
+    bookArray = JSON.parse(savedBooks)
+>>>>>>> develop
   }
 }
 
