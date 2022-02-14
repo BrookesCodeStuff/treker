@@ -158,7 +158,6 @@ function displayBooks(books) {
 }
 
 function saveBooks(event) {
-  console.log(bookArray)
   var info = event.target.parentElement.children;
   var bookObj = {};
   for (var i = 0; i < 3; i++) {
@@ -168,23 +167,26 @@ function saveBooks(event) {
       var id = info[i].id;
       bookObj[id] = info[i].innerText;
     }
-  
-
-    // bookArray.push(bookObj);
-    // window.localStorage.setItem('books', JSON.stringify(bookArray));
   }
   bookArray.push(bookObj);
   window.localStorage.setItem('books', JSON.stringify(bookArray));
 }
 function loadSavedBooks() {
+<<<<<<< HEAD
+  var savedBooks = window.localStorage.getItem('books');
+  if (!savedBooks) {
+    return false;
+  } else {
+    bookArray = JSON.parse(savedBooks);
+=======
   var savedBooks = window.localStorage.getItem("books")
   console.log(savedBooks)
   if (savedBooks == null){
     bookArray = []
   } else{
     bookArray = JSON.parse(savedBooks)
+>>>>>>> develop
   }
-  //bookArray = JSON.parse(savedBooks)
 }
 
 // EVENT LISTENERS
@@ -197,4 +199,5 @@ form.addEventListener('submit', () => {
   // Send inputs to the search handler
   handleLookup(originEl.value, destinationEl.value);
 });
-loadSavedBooks()
+
+loadSavedBooks();
