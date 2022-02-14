@@ -175,7 +175,7 @@ function loadSavedBooks() {
   var savedBooks = window.localStorage.getItem('books');
 
   if (savedBooks == null) {
-    bookArray = [];
+    return false;
   } else {
     bookArray = JSON.parse(savedBooks);
   }
